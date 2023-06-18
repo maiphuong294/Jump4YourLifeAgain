@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    public GameObject UIController;
     public Camera MainCamera;
     private Rigidbody2D rb;
     public float jumpSpeed;
@@ -25,7 +26,7 @@ public class PlayerScript : MonoBehaviour
     public float PlayerPosY;
     void Start()
     {
- 
+
         Debug.Log("Start");
         transform.Translate(Vector2.right * jumpSpeed);
         jumpSpeed = 15.0f;
@@ -39,13 +40,13 @@ public class PlayerScript : MonoBehaviour
         desiredDuration = 1.0f;
         CameraOnPlayer = true;
 
-      
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isOnBase == true)
+        if (isOnBase == true)
         {
 
             transform.position = new Vector3(BaseCollide.transform.position.x + toBasePos.x, BaseCollide.transform.position.y + toBasePos.y, 0f);
@@ -64,8 +65,8 @@ public class PlayerScript : MonoBehaviour
             MainCamera.transform.position = Vector3.Lerp(MainCamera.transform.position, EndCameraPos, elapsedTime / desiredDuration);
             if (elapsedTime / desiredDuration >= 0.9f) CameraOnPlayer = true;
         }
-        
-       
+
+
 
     }
 
@@ -75,7 +76,7 @@ public class PlayerScript : MonoBehaviour
         rb.AddForce(new Vector2(0f, 2.5f), ForceMode2D.Impulse);
         isOnBase = false;
     }
-  
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Base"))
@@ -94,20 +95,40 @@ public class PlayerScript : MonoBehaviour
             //xu ly state cua base
             sBaseScript = BaseCollide.GetComponent<BaseScript>();
             sBaseScript.state++;
-            
+
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Base"))
         {
-         
-            colliderBase = collision.gameObject.GetComponent<Collider2D>();
-            colliderBase.isTrigger = true ;//sau khi jump thi khong collide voi base nay nua
-            isOnBase = false;
-            
 
-         
+            colliderBase = collision.gameObject.GetComponent<Collider2D>();
+            colliderBase.isTrigger = true;//sau khi jump thi khong collide voi base nay nua
+            isOnBase = false;
+
+
+
         }
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bound"))
+        {
+            gameOver();
+        }
+    }
+
+    public void gameOver()
+    {
+        //truy cap den uicontroller -> canvas -> gameOverText
+        /*GameObject childCanvas = transform.GetChild(0).gameObject;
+        GameObject childGameOverText = childCanvas.transform.GetChild(0).gameObject;
+        childGameOverText.SetActive(true);*/
+
+        GameObject childchildGameOverText = UIController.transform.Find("Canvas/GameOver Text").gameObject;
+        childchildGameOverText.SetActive(true);
     }
 }

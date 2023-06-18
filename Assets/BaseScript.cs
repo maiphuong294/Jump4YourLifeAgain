@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BaseScript : MonoBehaviour
 {
+    public GameObject UIController;
     public float direction;
     public float velocity;
     private SpriteRenderer spriteRenderer;
