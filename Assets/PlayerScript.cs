@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
     public GameObject UIController;
+    public UIControllerScript sUIControllerScript;
+
     public Camera MainCamera;
     private Rigidbody2D rb;
     public float jumpSpeed;
@@ -32,6 +36,7 @@ public class PlayerScript : MonoBehaviour
         jumpSpeed = 15.0f;
         isOnBase = true;
         rb = GetComponent<Rigidbody2D>();
+        sUIControllerScript = UIController.GetComponent<UIControllerScript>();
 
         //lay khoang cach dau tien tu player den camera
         toCameraPos = new Vector2(MainCamera.transform.position.x - transform.position.x, MainCamera.transform.position.y - transform.position.y);
@@ -65,6 +70,12 @@ public class PlayerScript : MonoBehaviour
             MainCamera.transform.position = Vector3.Lerp(MainCamera.transform.position, EndCameraPos, elapsedTime / desiredDuration);
             if (elapsedTime / desiredDuration >= 0.9f) CameraOnPlayer = true;
         }
+        sBaseScript = BaseCollide.GetComponent<BaseScript>();
+
+        if (sBaseScript.state > 2)
+        {
+            sUIControllerScript.gameOver();
+        }
 
 
 
@@ -79,6 +90,8 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        sUIControllerScript.score++;
+        sUIControllerScript.setUIText();
         if (collision.gameObject.CompareTag("Base"))
         {
             Debug.Log("EnterBase");
@@ -117,18 +130,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bound"))
         {
-            gameOver();
+            sUIControllerScript.gameOver();
         }
-    }
-
-    public void gameOver()
-    {
-        //truy cap den uicontroller -> canvas -> gameOverText
-        /*GameObject childCanvas = transform.GetChild(0).gameObject;
-        GameObject childGameOverText = childCanvas.transform.GetChild(0).gameObject;
-        childGameOverText.SetActive(true);*/
-
-        GameObject childchildGameOverText = UIController.transform.Find("Canvas/GameOver Text").gameObject;
-        childchildGameOverText.SetActive(true);
     }
 }

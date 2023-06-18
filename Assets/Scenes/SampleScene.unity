@@ -306,6 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIController: {fileID: 1682903795}
+  sUIControllerScript: {fileID: 0}
   MainCamera: {fileID: 519420031}
   jumpSpeed: 0
   BaseCollide: {fileID: 0}
@@ -1616,6 +1617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f00432c020390f4ca932cbbcd261597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
 --- !u!1 &1814894699
 GameObject:
   m_ObjectHideFlags: 0
@@ -1709,8 +1711,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -300, y: 1242}
-  m_SizeDelta: {x: 800, y: 200}
+  m_AnchoredPosition: {x: -100, y: 1242}
+  m_SizeDelta: {x: 1200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1935019502
 MonoBehaviour:

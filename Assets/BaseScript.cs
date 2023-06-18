@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BaseScript : MonoBehaviour
 {
-    public GameObject UIController;
+ 
     public float direction;
     public float velocity;
     private SpriteRenderer spriteRenderer;
@@ -45,7 +45,7 @@ public class BaseScript : MonoBehaviour
                 spriteRenderer.sprite = brokenBase;
             }else if (state == 2)
             {
-
+                state++;
             }
 
         }
