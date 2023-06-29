@@ -10,6 +10,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject UIController;
     public UIControllerScript sUIControllerScript;
 
+
     public Camera MainCamera;
     private Rigidbody2D rb;
     public float jumpSpeed;
@@ -62,6 +63,7 @@ public class PlayerScript : MonoBehaviour
 
             }
         }
+        //lam muot chuyen dong camera
         if (CameraOnPlayer == false)
         {
             elapsedTime += Time.deltaTime;
@@ -72,9 +74,12 @@ public class PlayerScript : MonoBehaviour
         }
         sBaseScript = BaseCollide.GetComponent<BaseScript>();
 
+
+        //neu broken roi ma tiep tuc dap vao tuong
         if (sBaseScript.state > 2)
         {
-            sUIControllerScript.gameOver();
+            GameOverPanel.instance.Show();
+            BaseCollide.SetActive(false);
         }
 
 
@@ -90,6 +95,7 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        ScoreManagerScript.currentScore++;
         sUIControllerScript.score++;
         sUIControllerScript.setUIText();
         if (collision.gameObject.CompareTag("Base"))
@@ -106,8 +112,11 @@ public class PlayerScript : MonoBehaviour
             PlayerPosY = transform.position.y;
 
             //xu ly state cua base
-            sBaseScript = BaseCollide.GetComponent<BaseScript>();
-            sBaseScript.state++;
+            if(collision.gameObject.name != "FirstBase") {
+                sBaseScript = BaseCollide.GetComponent<BaseScript>();
+                sBaseScript.state++;
+            }
+           
 
         }
     }
@@ -130,7 +139,8 @@ public class PlayerScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bound"))
         {
-            sUIControllerScript.gameOver();
+            GameOverPanel.instance.Show();
+            //sUIControllerScript.gameOver();
         }
     }
 }

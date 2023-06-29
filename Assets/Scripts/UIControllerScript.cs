@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIControllerScript : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class UIControllerScript : MonoBehaviour
 
         Text textComponent = UIText.GetComponent<Text>();
         textComponent.text = "GameOver - Score: " + score.ToString();
+
     }
 
     public void setUIText()
