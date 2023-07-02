@@ -9,7 +9,7 @@ public class BaseScript : MonoBehaviour
     public float velocity;
     private SpriteRenderer spriteRenderer;
     public Sprite brokenBase;
-    public int state;
+    public int state = 0;
     //0 la ban dau khoi tao
     //1 la khi player da nhay len
     //2 la khi broken
@@ -18,7 +18,7 @@ public class BaseScript : MonoBehaviour
     public GameObject GameOverText;
     void Start()
     {
-        state = 0;
+        
         spriteRenderer = GetComponent<SpriteRenderer>();
         direction = 1.0F;
         velocity = 2.5F;

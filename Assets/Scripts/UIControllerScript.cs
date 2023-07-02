@@ -7,11 +7,14 @@ using UnityEngine.SceneManagement;
 public class UIControllerScript : MonoBehaviour
 {
     // Start is called before the first frame update
-
+    public Animator animatorPerfect;
     public int score;
     void Start()
     {
         score = -1;
+        //xu ly perfect
+        GameObject perfectPopup = transform.Find("Canvas/Perfect Popup").gameObject;
+        animatorPerfect = perfectPopup.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -28,7 +31,7 @@ public class UIControllerScript : MonoBehaviour
         UIText.SetActive(true);
 
         Text textComponent = UIText.GetComponent<Text>();
-        textComponent.text = "GameOver - Score: " + score.ToString();
+        textComponent.text = "GameOver - Score: " + ScoreManagerScript.currentScore.ToString();
 
     }
 
@@ -38,7 +41,16 @@ public class UIControllerScript : MonoBehaviour
         UIText.SetActive(true);
 
         Text textComponent = UIText.GetComponent<Text>();
-        textComponent.text = score.ToString();
+        textComponent.text = ScoreManagerScript.currentScore.ToString();
     }
+
+    public void Perfect()
+    {
+        Debug.Log("Perfect");
+        animatorPerfect.SetBool("isPerfect", true);
+    }
+    
+
+
 
 }

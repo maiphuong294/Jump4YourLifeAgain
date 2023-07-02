@@ -1,4 +1,6 @@
 
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,7 +25,7 @@ public class GameOverPanel : MonoBehaviour
 
     public void Show()
     {
-        Debug.Log("Game over");
+        //Debug.Log("Game over");
         gameObject.SetActive(true);
         // dung game
         Time.timeScale = 0f;
@@ -34,7 +36,14 @@ public class GameOverPanel : MonoBehaviour
     public void OnReplayButton()
     {
         Debug.Log("on replay button");
+        StartCoroutine(Delay());
+        
+    }
+
+    private IEnumerator Delay()
+    {
         Time.timeScale = 1f;
+        yield return new WaitForSecondsRealtime(0.5f);
         SceneManager.LoadScene("PlayScene");
     }
 

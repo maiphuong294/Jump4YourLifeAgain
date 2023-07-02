@@ -1,9 +1,12 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
+
+
 
 public class PlayerScript : MonoBehaviour
 {
@@ -29,6 +32,7 @@ public class PlayerScript : MonoBehaviour
     public float elapsedTime;
     public bool CameraOnPlayer;
     public float PlayerPosY;
+    
     void Start()
     {
 
@@ -46,23 +50,29 @@ public class PlayerScript : MonoBehaviour
         desiredDuration = 1.0f;
         CameraOnPlayer = true;
 
-
+        sBaseScript = null;
+        BaseCollide = null;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isOnBase == true)
+        
+        if (isOnBase == true && BaseCollide != null)
         {
-
+            //player dinh theo base
             transform.position = new Vector3(BaseCollide.transform.position.x + toBasePos.x, BaseCollide.transform.position.y + toBasePos.y, 0f);
-            if (Input.GetMouseButtonDown(0))
-            {
-                Debug.Log("Mouse clickkkkkk");
-                Jump();
-
-            }
         }
+        
+  
+        if (isOnBase == true && Input.GetMouseButtonDown(0) && !IsOverUI())
+        {
+            //khi o tren base thi co the nhay
+            Debug.Log("Mouse clickkkkkk " + Time.time);
+            Jump();         
+
+        }
+        
         //lam muot chuyen dong camera
         if (CameraOnPlayer == false)
         {
@@ -72,23 +82,24 @@ public class PlayerScript : MonoBehaviour
             MainCamera.transform.position = Vector3.Lerp(MainCamera.transform.position, EndCameraPos, elapsedTime / desiredDuration);
             if (elapsedTime / desiredDuration >= 0.9f) CameraOnPlayer = true;
         }
-        sBaseScript = BaseCollide.GetComponent<BaseScript>();
+        
 
 
         //neu broken roi ma tiep tuc dap vao tuong
-        if (sBaseScript.state > 2)
+        if (sBaseScript != null)
         {
-            GameOverPanel.instance.Show();
-            BaseCollide.SetActive(false);
+            sBaseScript = BaseCollide.GetComponent<BaseScript>();
+            if (sBaseScript.state > 2)
+            {
+                GameOverPanel.instance.Show();
+                BaseCollide.SetActive(false);
+            }
         }
-
-
-
     }
 
     void Jump()
     {
-        Debug.Log("Jump!");
+        Debug.Log("Jump! " + Time.time);
         rb.AddForce(new Vector2(0f, 2.5f), ForceMode2D.Impulse);
         isOnBase = false;
     }
@@ -96,8 +107,9 @@ public class PlayerScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         ScoreManagerScript.currentScore++;
-        sUIControllerScript.score++;
-        sUIControllerScript.setUIText();
+        ScoreManagerScript.currentScore += ScoreManagerScript.scoreTrigger;
+        ScoreManagerScript.scoreTrigger = 0;
+
         if (collision.gameObject.CompareTag("Base"))
         {
             Debug.Log("EnterBase");
@@ -112,25 +124,37 @@ public class PlayerScript : MonoBehaviour
             PlayerPosY = transform.position.y;
 
             //xu ly state cua base
-            if(collision.gameObject.name != "FirstBase") {
+            if (collision.gameObject.name != "FirstBase")
+            {
                 sBaseScript = BaseCollide.GetComponent<BaseScript>();
                 sBaseScript.state++;
             }
-           
 
+            //check Perfect
+            if (isPerfect() && collision.gameObject.name != "FirstBase")
+            {
+                ScoreManagerScript.bonus++;
+                ScoreManagerScript.currentScore += ScoreManagerScript.bonus;
+                sUIControllerScript.Perfect();
+            }
+            else ScoreManagerScript.bonus = 0;
+            sUIControllerScript.setUIText();
+
+            //sau khi jump len base do thi khong tinh trigger cho base do nua
+            GameObject ScoreTrigger = BaseCollide.transform.Find("ScoreTrigger").gameObject;
+            if (ScoreTrigger != null)
+            {
+                ScoreTrigger.SetActive(false);
+            }
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Base"))
         {
-
             colliderBase = collision.gameObject.GetComponent<Collider2D>();
             colliderBase.isTrigger = true;//sau khi jump thi khong collide voi base nay nua
             isOnBase = false;
-
-
-
         }
     }
 
@@ -140,7 +164,35 @@ public class PlayerScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Bound"))
         {
             GameOverPanel.instance.Show();
-            //sUIControllerScript.gameOver();
         }
+        if (collision.gameObject.CompareTag("ScoreTrigger"))
+        {
+            Debug.Log("Trigger Score");
+            ScoreManagerScript.scoreTrigger++;
+        }
+    }
+
+
+    public bool isPerfect()
+    {
+        Debug.Log("PERFECT");
+        if(Mathf.Abs(transform.position.x - BaseCollide.transform.position.x) < 0.1f)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// kiểm tra xem chuột có đang nằm trên UI hay không?
+    /// UI có tick chọn RaycastTarget
+    /// </summary>
+    public static bool IsOverUI()
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results.Count > 0;
     }
 }
