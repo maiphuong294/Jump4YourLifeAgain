@@ -35,7 +35,6 @@ public class BaseSpawnerScript : MonoBehaviour
 
     void SpawnBase()
     {
-        Debug.Log("CountBase");
         Instantiate(BasePrefab, new Vector3(Random.Range(-1.8f, 1.8f), SpawnPosY, 0f) , Quaternion.identity);
     }
 }

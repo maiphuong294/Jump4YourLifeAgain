@@ -15,6 +15,7 @@ public class UIControllerScript : MonoBehaviour
         //xu ly perfect
         GameObject perfectPopup = transform.Find("Canvas/Perfect Popup").gameObject;
         animatorPerfect = perfectPopup.GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -46,10 +47,19 @@ public class UIControllerScript : MonoBehaviour
 
     public void Perfect()
     {
-        Debug.Log("Perfect");
-        animatorPerfect.SetBool("isPerfect", true);
+        StartCoroutine("PerfectRun");
     }
     
+    private IEnumerator PerfectRun()
+    {
+        //Debug.Log("Perfect");
+        animatorPerfect.SetBool("isPerfect", true);
+        yield return new WaitForSeconds(0.25f);
+        animatorPerfect.SetBool("isPerfect", false);
+
+    }
+
+ 
 
 
 

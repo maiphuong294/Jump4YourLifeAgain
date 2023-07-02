@@ -95,6 +95,7 @@ public class PlayerScript : MonoBehaviour
                 BaseCollide.SetActive(false);
             }
         }
+
     }
 
     void Jump()
@@ -133,6 +134,7 @@ public class PlayerScript : MonoBehaviour
             //check Perfect
             if (isPerfect() && collision.gameObject.name != "FirstBase")
             {
+                Debug.Log("PERFECT");
                 ScoreManagerScript.bonus++;
                 ScoreManagerScript.currentScore += ScoreManagerScript.bonus;
                 sUIControllerScript.Perfect();
@@ -175,7 +177,7 @@ public class PlayerScript : MonoBehaviour
 
     public bool isPerfect()
     {
-        Debug.Log("PERFECT");
+        
         if(Mathf.Abs(transform.position.x - BaseCollide.transform.position.x) < 0.1f)
         {
             return true;

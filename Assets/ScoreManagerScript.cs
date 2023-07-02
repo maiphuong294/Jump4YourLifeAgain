@@ -10,11 +10,14 @@ public class ScoreManagerScript : MonoBehaviour
     public static int bonus;
     public static int scoreTrigger;
     public static int highestScore;
+    //static thi se k hien len inspector?
 
     //cai nay la singleton
     public static ScoreManagerScript instance { get; private set; }
     void Start()
     {
+        instance = this;
+
         currentScore = 0;
         bonus = 0;
         scoreTrigger = 0;
