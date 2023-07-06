@@ -946,7 +946,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 467707079}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 983046288}
+        m_TargetAssemblyTypeName: PausePanel, Assembly-CSharp
+        m_MethodName: OnHomeButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &467707079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1665,7 +1677,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &983046285
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1738,6 +1750,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 983046289}
+  Audio: {fileID: 343865947, guid: d846d50c9178eed4290581753ca6458a, type: 3}
+  Vibrate: {fileID: 825257122, guid: d846d50c9178eed4290581753ca6458a, type: 3}
+  noAudio: {fileID: 1408906336, guid: d846d50c9178eed4290581753ca6458a, type: 3}
+  noVibrate: {fileID: 1337976555, guid: d846d50c9178eed4290581753ca6458a, type: 3}
+  isAudioOn: 0
+  isVibrateOn: 0
 --- !u!95 &983046289
 Animator:
   serializedVersion: 5
@@ -2517,7 +2535,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1332344797}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 983046288}
+        m_TargetAssemblyTypeName: PausePanel, Assembly-CSharp
+        m_MethodName: OnVibrateButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1332344797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3078,7 +3108,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1487405955}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 983046288}
+        m_TargetAssemblyTypeName: PausePanel, Assembly-CSharp
+        m_MethodName: OnAudioButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1487405955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3497,7 +3539,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animatorPerfect: {fileID: 0}
-  isPerfectTrue: 0
   score: 0
 --- !u!1 &1789018864
 GameObject:
@@ -3582,7 +3623,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1789018867}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 983046288}
+        m_TargetAssemblyTypeName: PausePanel, Assembly-CSharp
+        m_MethodName: OnReplayButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1789018867
 MonoBehaviour:
   m_ObjectHideFlags: 0

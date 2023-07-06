@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class PauseScript : MonoBehaviour
+public class MenuScript : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,13 +17,9 @@ public class PauseScript : MonoBehaviour
         
     }
 
-
-    public void OnPauseButton()
+    public void OnPlayButton()
     {
-        Debug.Log("PAUSE");
-        
-        PausePanel.instance.Open();
- 
+        Debug.Log("Let's play");
+        SceneManager.LoadScene("PlayScene");
     }
-
 }

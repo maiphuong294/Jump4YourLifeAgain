@@ -36,11 +36,11 @@ public class GameOverPanel : MonoBehaviour
     public void OnReplayButton()
     {
         Debug.Log("on replay button");
-        StartCoroutine(Delay());
+        StartCoroutine(Replay());
         
     }
 
-    private IEnumerator Delay()
+    public IEnumerator Replay()
     {
         Time.timeScale = 1f;
         yield return new WaitForSecondsRealtime(0.5f);

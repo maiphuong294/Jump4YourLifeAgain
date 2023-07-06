@@ -18,7 +18,7 @@ public class ScoreManagerScript : MonoBehaviour
     {
         instance = this;
 
-        currentScore = 0;
+        currentScore = -1;
         bonus = 0;
         scoreTrigger = 0;
     }
