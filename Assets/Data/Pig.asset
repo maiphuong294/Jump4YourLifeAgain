@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cb5c0fcd40e6f24c95ea3092446214e, type: 3}
+  m_Name: Pig
+  m_EditorClassIdentifier: 
+  characterName: Pig
+  head: {fileID: 391007632, guid: a268a82ac43812946944bffd962ffa81, type: 3}
+  headMono: {fileID: 0}
+  body: {fileID: -1577618253, guid: a268a82ac43812946944bffd962ffa81, type: 3}
+  leftHand: {fileID: 1385333178, guid: a268a82ac43812946944bffd962ffa81, type: 3}
+  rightHand: {fileID: 926942059, guid: a268a82ac43812946944bffd962ffa81, type: 3}
+  leftFoot: {fileID: -793715310, guid: a268a82ac43812946944bffd962ffa81, type: 3}
+  rightFoot: {fileID: -1637709472, guid: a268a82ac43812946944bffd962ffa81, type: 3}
+  tail: {fileID: 0}
+  full: {fileID: 1643760562, guid: 62af95d5aa077854480beb03a266c915, type: 3}

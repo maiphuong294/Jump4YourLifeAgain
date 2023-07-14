@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cb5c0fcd40e6f24c95ea3092446214e, type: 3}
+  m_Name: Penguin
+  m_EditorClassIdentifier: 
+  characterName: Penguin
+  head: {fileID: -1723822858, guid: d846d50c9178eed4290581753ca6458a, type: 3}
+  headMono: {fileID: 1350274183, guid: d846d50c9178eed4290581753ca6458a, type: 3}
+  body: {fileID: 0}
+  leftHand: {fileID: 0}
+  rightHand: {fileID: 0}
+  leftFoot: {fileID: 0}
+  rightFoot: {fileID: 0}
+  tail: {fileID: 0}
+  full: {fileID: 175326671, guid: 62af95d5aa077854480beb03a266c915, type: 3}

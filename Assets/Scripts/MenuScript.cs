@@ -76,4 +76,9 @@ public class MenuScript : MonoBehaviour
         else icon.sprite = noVibrate;
 
     }
+
+    public void OnOptionButton()
+    {
+        OptionPanel.instance.Open();
+    }
 }
