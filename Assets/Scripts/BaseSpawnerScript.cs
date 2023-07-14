@@ -11,6 +11,8 @@ public class BaseSpawnerScript : MonoBehaviour
     public float BaseToBase; //khoang cach giua 2 base
     public float timer;
     public float countBase;
+
+    //public List<Base> allCurrentBase;
     // Start is called before the first frame update
 
     void Start()
@@ -36,5 +38,9 @@ public class BaseSpawnerScript : MonoBehaviour
     void SpawnBase()
     {
         Instantiate(BasePrefab, new Vector3(Random.Range(-1.8f, 1.8f), SpawnPosY, 0f) , Quaternion.identity);
+        //allCurrentBase.Insert(go);
     }
+
+
+
 }

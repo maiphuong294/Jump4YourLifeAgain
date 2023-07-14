@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class UIControllerScript : MonoBehaviour
 {
@@ -24,25 +25,15 @@ public class UIControllerScript : MonoBehaviour
      
     }
 
-    public void gameOver()
-    {
-        //truy cap den uicontroller -> canvas -> gameOverText
-
-        GameObject UIText = transform.Find("Canvas/GameOver Text").gameObject;
-        UIText.SetActive(true);
-
-        Text textComponent = UIText.GetComponent<Text>();
-        textComponent.text = "GameOver - Score: " + ScoreManagerScript.currentScore.ToString();
-
-    }
-
     public void setUIText()
     {
-        GameObject UIText = transform.Find("Canvas/GameOver Text").gameObject;
+        GameObject UIText = transform.Find("Canvas/Score Text").gameObject;
         UIText.SetActive(true);
 
-        Text textComponent = UIText.GetComponent<Text>();
+        TextMeshProUGUI textComponent = UIText.GetComponent<TextMeshProUGUI>();
         textComponent.text = ScoreManagerScript.currentScore.ToString();
+
+        
     }
 
     public void Perfect()
@@ -58,6 +49,15 @@ public class UIControllerScript : MonoBehaviour
         animatorPerfect.SetBool("isPerfect", false);
 
     }
+
+    public void SetFinalScore()
+    {
+        Debug.Log("setFinalscore");
+        GameObject score = transform.Find("Canvas/GameOverPanel/Pop-up/Final Score").gameObject;
+        TextMeshProUGUI scoreText = score.GetComponent<TextMeshProUGUI>();
+        scoreText.text = ScoreManagerScript.currentScore.ToString();
+    }
+
 
  
 

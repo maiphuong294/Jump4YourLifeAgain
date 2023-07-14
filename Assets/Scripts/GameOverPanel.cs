@@ -11,11 +11,14 @@ public class GameOverPanel : MonoBehaviour
     public static GameOverPanel instance {  get; private set; }
 
     public Animator animator;
+    [SerializeField] private GameObject uiController;
 
 
     private void Awake()
     {
-        instance = this; 
+        instance = this;
+        
+        
     }
 
     private void Start()
@@ -27,8 +30,19 @@ public class GameOverPanel : MonoBehaviour
     {
         //Debug.Log("Game over");
         gameObject.SetActive(true);
+
+        //set highscore cho score textmeshpro
+        GameObject popup = transform.Find("Pop-up").gameObject;
+        animator = popup.transform.GetComponent<Animator>();
+
+        UIControllerScript sUIControllerScript = uiController.GetComponent<UIControllerScript>();
+        sUIControllerScript.SetFinalScore();
+
+
         // dung game
         Time.timeScale = 0f;
+        //dung tat ca cac base trong scene
+
         animator.SetBool("NeedMove", true);
     }
 
@@ -45,6 +59,11 @@ public class GameOverPanel : MonoBehaviour
         Time.timeScale = 1f;
         yield return new WaitForSecondsRealtime(0.5f);
         SceneManager.LoadScene("PlayScene");
+    }
+
+    public void OnCloseButton()
+    {
+        SceneManager.LoadScene("MenuScene");
     }
 
 }

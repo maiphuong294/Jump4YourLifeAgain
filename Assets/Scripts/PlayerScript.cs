@@ -28,10 +28,10 @@ public class PlayerScript : MonoBehaviour
     //neu tren base thi se di chuyen theo base
 
     //CameraFollowPlayer
-    public float desiredDuration;// thoi gian mong muon camera di chuyen
-    public float elapsedTime;
-    public bool CameraOnPlayer;
-    public float PlayerPosY;
+    [SerializeField] private float desiredDuration;// thoi gian mong muon camera di chuyen
+    [SerializeField] private float elapsedTime;
+    [SerializeField] private bool CameraOnPlayer;
+    [SerializeField] private float PlayerPosY;
     
     void Start()
     {
@@ -143,10 +143,10 @@ public class PlayerScript : MonoBehaviour
             sUIControllerScript.setUIText();
 
             //sau khi jump len base do thi khong tinh trigger cho base do nua
-            GameObject ScoreTrigger = BaseCollide.transform.Find("ScoreTrigger").gameObject;
-            if (ScoreTrigger != null)
+            GameObject scoreTrigger = BaseCollide.transform.Find("ScoreTrigger").gameObject;
+            if (scoreTrigger != null)
             {
-                ScoreTrigger.SetActive(false);
+                scoreTrigger.SetActive(false);
             }
         }
     }
