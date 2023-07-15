@@ -91,7 +91,7 @@ public class PlayerScript : MonoBehaviour
             sBaseScript = BaseCollide.GetComponent<BaseScript>();
             if (sBaseScript.state > 2)
             {
-                GameOverPanel.instance.Show();
+                gameOver();
                 BaseCollide.SetActive(false);
             }
         }
@@ -165,7 +165,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bound"))
         {
-            GameOverPanel.instance.Show();
+            gameOver();
         }
         if (collision.gameObject.CompareTag("ScoreTrigger"))
         {
@@ -196,5 +196,29 @@ public class PlayerScript : MonoBehaviour
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
         return results.Count > 0;
+    }
+
+    public void gameOver()
+    {
+        //dung tat ca va de cho player roi xuong
+
+        Collider2D player = gameObject.GetComponent<Collider2D>();
+        if (player != null)
+        {
+            player.isTrigger = true;
+        }
+        // tim tat ca object dang active voi tag la base
+        //Debug.Log("gameover");
+        GameObject[] objectsWithTagBase = GameObject.FindGameObjectsWithTag("Base"); 
+        foreach (GameObject obj in objectsWithTagBase)
+        {
+            //lan luot cho stop
+            BaseScript a = obj.GetComponent<BaseScript>();
+            if (a != null)
+            {
+                a.velocity = 0f;
+            }
+        }
+        GameOverPanel.instance.Show();
     }
 }

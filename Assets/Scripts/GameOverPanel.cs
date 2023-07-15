@@ -40,7 +40,7 @@ public class GameOverPanel : MonoBehaviour
 
 
         // dung game
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
         //dung tat ca cac base trong scene
 
         animator.SetBool("NeedMove", true);
