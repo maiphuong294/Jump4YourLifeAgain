@@ -32,6 +32,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float elapsedTime;
     [SerializeField] private bool CameraOnPlayer;
     [SerializeField] private float PlayerPosY;
+
+    [SerializeField] private Animator playerAnimator;
     
     void Start()
     {
@@ -52,6 +54,8 @@ public class PlayerScript : MonoBehaviour
 
         sBaseScript = null;
         BaseCollide = null;
+
+        playerAnimator = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -103,6 +107,7 @@ public class PlayerScript : MonoBehaviour
         Debug.Log("Jump! " + Time.time);
         rb.AddForce(new Vector2(0f, 2.5f), ForceMode2D.Impulse);
         isOnBase = false;
+        playerAnimator.SetBool("isJump", true);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -113,6 +118,7 @@ public class PlayerScript : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Base"))
         {
+            playerAnimator.SetBool("isJump", false);
             Debug.Log("EnterBase");
             //xuly player vs base
             isOnBase = true;

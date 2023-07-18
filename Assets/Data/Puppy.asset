@@ -15,10 +15,10 @@ MonoBehaviour:
   characterName: Puppy
   head: {fileID: 2111778960, guid: d846d50c9178eed4290581753ca6458a, type: 3}
   headMono: {fileID: -1295700821, guid: d846d50c9178eed4290581753ca6458a, type: 3}
-  body: {fileID: 0}
-  leftHand: {fileID: 0}
-  rightHand: {fileID: 0}
-  leftFoot: {fileID: 0}
-  rightFoot: {fileID: 0}
-  tail: {fileID: 0}
+  body: {fileID: 763179815, guid: 632fa6bca44e5654eb8e983eecc133f8, type: 3}
+  leftHand: {fileID: -1801058450, guid: 632fa6bca44e5654eb8e983eecc133f8, type: 3}
+  rightHand: {fileID: -469165294, guid: 632fa6bca44e5654eb8e983eecc133f8, type: 3}
+  leftFoot: {fileID: -627788214, guid: 632fa6bca44e5654eb8e983eecc133f8, type: 3}
+  rightFoot: {fileID: -918252614, guid: 632fa6bca44e5654eb8e983eecc133f8, type: 3}
+  tail: {fileID: 740502093, guid: 632fa6bca44e5654eb8e983eecc133f8, type: 3}
   full: {fileID: -903666935, guid: 62af95d5aa077854480beb03a266c915, type: 3}
