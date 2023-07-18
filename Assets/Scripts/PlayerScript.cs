@@ -149,11 +149,16 @@ public class PlayerScript : MonoBehaviour
             sUIControllerScript.setUIText();
 
             //sau khi jump len base do thi khong tinh trigger cho base do nua
-            GameObject scoreTrigger = BaseCollide.transform.Find("ScoreTrigger").gameObject;
-            if (scoreTrigger != null)
+            if(BaseCollide != null)
             {
-                scoreTrigger.SetActive(false);
+                GameObject scoreTrigger = BaseCollide.transform.Find("ScoreTrigger").gameObject;
+                if (scoreTrigger != null)
+                {
+                    scoreTrigger.SetActive(false);
+                }
             }
+            
+            
         }
     }
     private void OnCollisionExit2D(Collision2D collision)

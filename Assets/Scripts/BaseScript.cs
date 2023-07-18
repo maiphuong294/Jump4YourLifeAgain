@@ -21,7 +21,7 @@ public class BaseScript : MonoBehaviour
         
         spriteRenderer = GetComponent<SpriteRenderer>();
         direction = 1.0F;
-        velocity = 2.5F;
+        velocity = 2F;
     }
 
     // Update is called once per frame

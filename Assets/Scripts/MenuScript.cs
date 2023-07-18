@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,6 +17,8 @@ public class MenuScript : MonoBehaviour
 
     public bool isAudioOn;
     public bool isVibrateOn;
+
+    [SerializeField] private TextMeshProUGUI highScoreText;
     void Start()
     {
         GameObject popup = transform.Find("Setting Popup/Popup").gameObject;
@@ -23,6 +26,12 @@ public class MenuScript : MonoBehaviour
 
         isAudioOn = true;
         isVibrateOn = true;
+
+        highScoreText = transform.Find("HighScore Text").gameObject.GetComponent<TextMeshProUGUI>();
+        if (PlayerPrefs.HasKey("HighScore"))
+        {
+            highScoreText.SetText(PlayerPrefs.GetInt("HighScore").ToString());
+        }
     }
 
     // Update is called once per frame

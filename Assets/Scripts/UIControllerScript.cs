@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+
 public class UIControllerScript : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -56,6 +57,12 @@ public class UIControllerScript : MonoBehaviour
         GameObject score = transform.Find("Canvas/GameOverPanel/Pop-up/Final Score").gameObject;
         TextMeshProUGUI scoreText = score.GetComponent<TextMeshProUGUI>();
         scoreText.text = ScoreManagerScript.currentScore.ToString();
+
+        int h = 0;
+        if (PlayerPrefs.HasKey("HighScore")){
+            h = PlayerPrefs.GetInt("HighScore");
+        }
+        PlayerPrefs.SetInt("HighScore", System.Math.Max(ScoreManagerScript.currentScore, h));   
     }
 
 
