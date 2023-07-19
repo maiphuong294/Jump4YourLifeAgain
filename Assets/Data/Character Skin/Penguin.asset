@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Penguin
   m_EditorClassIdentifier: 
   characterName: Penguin
-  head: {fileID: -1723822858, guid: d846d50c9178eed4290581753ca6458a, type: 3}
+  head: {fileID: -1873784950, guid: bf5cab5621232b74c83e21574b04f404, type: 3}
   headMono: {fileID: 1350274183, guid: d846d50c9178eed4290581753ca6458a, type: 3}
-  body: {fileID: 0}
-  leftHand: {fileID: 0}
-  rightHand: {fileID: 0}
-  leftFoot: {fileID: 0}
-  rightFoot: {fileID: 0}
+  body: {fileID: -1705558226, guid: bf5cab5621232b74c83e21574b04f404, type: 3}
+  leftHand: {fileID: 1308700980, guid: bf5cab5621232b74c83e21574b04f404, type: 3}
+  rightHand: {fileID: 73551043, guid: bf5cab5621232b74c83e21574b04f404, type: 3}
+  leftFoot: {fileID: -1254292548, guid: bf5cab5621232b74c83e21574b04f404, type: 3}
+  rightFoot: {fileID: -1404904214, guid: bf5cab5621232b74c83e21574b04f404, type: 3}
   tail: {fileID: 0}
   full: {fileID: 175326671, guid: 62af95d5aa077854480beb03a266c915, type: 3}

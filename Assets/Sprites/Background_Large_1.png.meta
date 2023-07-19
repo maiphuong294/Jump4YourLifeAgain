@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a45ad52b7853ef44b9ff7710ade26f54
+guid: b2cf5a332bd2c5743967b66284096f9a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -102,7 +102,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -114,7 +114,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -129,43 +129,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Background_Large_2_0
+      name: Background_Large_1_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 245
-        width: 900
-        height: 1803
+        y: 246
+        width: 902
+        height: 1802
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d89714cef8ea70439de462a42a8a15a
-      internalID: -2012076315
+      spriteID: 0803e499164824f4496762d2991c29c7
+      internalID: -310818244
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Background_Large_2_1
+      name: Background_Large_1_1
       rect:
         serializedVersion: 2
-        x: 898
-        y: 243
-        width: 904
-        height: 1802
+        x: 902
+        y: 247
+        width: 902
+        height: 1801
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 80f6f4623895b074daac1b9364ccf06c
-      internalID: -325222244
+      spriteID: 8fa15a072602c0244a48ef05f98dd121
+      internalID: -1722511487
       vertices: []
       indices: 
       edges: []
@@ -181,8 +181,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Background_Large_2_0: -2012076315
-      Background_Large_2_1: -325222244
+      Background_Large_1_0: -310818244
+      Background_Large_1_1: -1722511487
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

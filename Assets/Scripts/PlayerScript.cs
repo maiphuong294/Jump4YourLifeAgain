@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SocialPlatforms.Impl;
@@ -14,7 +15,7 @@ public class PlayerScript : MonoBehaviour
     public UIControllerScript sUIControllerScript;
 
 
-    public Camera MainCamera;
+    [SerializeField] private Camera MainCamera;
     private Rigidbody2D rb;
     public float jumpSpeed;
     private Collider2D colliderBase;
@@ -34,7 +35,21 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float PlayerPosY;
 
     [SerializeField] private Animator playerAnimator;
-    
+
+    [SerializeField] private Character Pig;
+    [SerializeField] private Character Puppy;
+    [SerializeField] private Character Penguin;
+
+    private Dictionary<string, Character> CharacterDictionary = new Dictionary<string, Character>();
+
+    [SerializeField] private Scene City;
+    [SerializeField] private Scene Forest;
+    [SerializeField] private Scene IceMountain;
+    [SerializeField] private Scene Meadow;
+    [SerializeField] private Scene SkyandClouds;
+
+    private Dictionary<string, Scene> SceneDictionary = new Dictionary<string, Scene>();
+
     void Start()
     {
 
@@ -56,6 +71,68 @@ public class PlayerScript : MonoBehaviour
         BaseCollide = null;
 
         playerAnimator = gameObject.GetComponent<Animator>();
+
+        //doi skin cho player
+        
+        CharacterDictionary.Add("Pig", Pig);
+        CharacterDictionary.Add("Puppy", Puppy);
+        CharacterDictionary.Add("Penguin", Penguin);
+
+        string s = PlayerPrefs.GetString("Character");
+        if (s != null)
+        {
+            if (CharacterDictionary.TryGetValue(s, out Character a))
+            {
+                SpriteRenderer headSprite = transform.Find("Head").gameObject.GetComponent<SpriteRenderer>();   
+                headSprite.sprite = a.head;
+
+                SpriteRenderer bodySprite = transform.Find("Body").gameObject.GetComponent<SpriteRenderer>();
+                bodySprite.sprite = a.body;
+
+                SpriteRenderer leftHand = transform.Find("Hand/LeftHand").gameObject.GetComponent<SpriteRenderer>();
+                leftHand.sprite = a.leftHand;
+
+                SpriteRenderer rightHand = transform.Find("Hand/RightHand").gameObject.GetComponent<SpriteRenderer>();
+                rightHand.sprite = a.rightHand;
+
+                SpriteRenderer leftFoot = transform.Find("Feet/LeftFoot").gameObject.GetComponent<SpriteRenderer>();
+                leftFoot.sprite = a.leftFoot;
+
+                SpriteRenderer rightFoot = transform.Find("Feet/RightFoot").gameObject.GetComponent<SpriteRenderer>();
+                rightFoot.sprite = a.rightFoot;
+
+                SpriteRenderer tail = transform.Find("Tail").gameObject.GetComponent<SpriteRenderer>();
+                tail.sprite = a.tail;
+
+            }
+            else
+            {
+                Debug.LogWarning("Object with name '" + s + "' not found.");
+            }
+        }
+
+        //doi scene cho background
+        SceneDictionary.Add("City", City);
+        SceneDictionary.Add("Forest", Forest);
+        SceneDictionary.Add("Ice Mountain", IceMountain);
+        SceneDictionary.Add("Meadow", Meadow);
+        SceneDictionary.Add("Sky and Clouds", SkyandClouds);
+
+        string s2 = PlayerPrefs.GetString("Scene");
+        if(s2 != null)
+        {
+            if(SceneDictionary.TryGetValue(s2, out Scene a))
+            {
+                SpriteRenderer background = MainCamera.transform.Find("Background").gameObject.GetComponent<SpriteRenderer>();
+                background.sprite = a.scene;
+            }
+            else
+            {
+                Debug.Log("Scene not found");
+            }
+            
+        }
+
     }
 
     // Update is called once per frame
@@ -151,9 +228,9 @@ public class PlayerScript : MonoBehaviour
             //sau khi jump len base do thi khong tinh trigger cho base do nua
             if(BaseCollide != null)
             {
+                  
                 GameObject scoreTrigger = BaseCollide.transform.Find("ScoreTrigger").gameObject;
-                if (scoreTrigger != null)
-                {
+                if(scoreTrigger != null){
                     scoreTrigger.SetActive(false);
                 }
             }
