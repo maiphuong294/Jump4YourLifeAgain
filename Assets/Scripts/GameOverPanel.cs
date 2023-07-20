@@ -44,6 +44,9 @@ public class GameOverPanel : MonoBehaviour
         //dung tat ca cac base trong scene
 
         animator.SetBool("NeedMove", true);
+
+        AudioManager.instance.stopAudio();
+        AudioManager.instance.audioGameOver();
     }
 
 
@@ -51,6 +54,8 @@ public class GameOverPanel : MonoBehaviour
     {
         Debug.Log("on replay button");
         StartCoroutine(Replay());
+
+        AudioManager.instance.audioBackground();
         
     }
 

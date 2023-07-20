@@ -60,8 +60,10 @@ public class PausePanel : MonoBehaviour
         {
             icon.sprite = Audio;
         }
-        else icon.sprite = noAudio;
-
+        else
+        {
+            icon.sprite = noAudio;
+        }
         
     }
     public void OnVibrateButton()
@@ -85,7 +87,9 @@ public class PausePanel : MonoBehaviour
     }
     public void OnHomeButton()
     {
+        
         SceneManager.LoadScene("MenuScene");
+        
     }
 
     public IEnumerator Replay()

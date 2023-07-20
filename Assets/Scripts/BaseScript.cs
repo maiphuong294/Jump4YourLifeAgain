@@ -43,6 +43,7 @@ public class BaseScript : MonoBehaviour
             {
                 state++;
                 spriteRenderer.sprite = brokenBase;
+                AudioManager.instance.audioBreakSound();
             }else if (state == 2)
             {
                 state++;

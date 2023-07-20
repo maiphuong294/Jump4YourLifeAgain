@@ -185,6 +185,8 @@ public class PlayerScript : MonoBehaviour
         rb.AddForce(new Vector2(0f, 2.5f), ForceMode2D.Impulse);
         isOnBase = false;
         playerAnimator.SetBool("isJump", true);
+
+        AudioManager.instance.audioJump();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
