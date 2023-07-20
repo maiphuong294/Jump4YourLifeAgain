@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cb5c0fcd40e6f24c95ea3092446214e, type: 3}
+  m_Name: Kitten
+  m_EditorClassIdentifier: 
+  characterName: Kitten
+  head: {fileID: -2091452274, guid: ccf528106549363479b32be8a6b4f0ad, type: 3}
+  headMono: {fileID: 0}
+  body: {fileID: 676003551, guid: ccf528106549363479b32be8a6b4f0ad, type: 3}
+  leftHand: {fileID: -147451247, guid: ccf528106549363479b32be8a6b4f0ad, type: 3}
+  rightHand: {fileID: 1105690698, guid: ccf528106549363479b32be8a6b4f0ad, type: 3}
+  leftFoot: {fileID: 194351895, guid: ccf528106549363479b32be8a6b4f0ad, type: 3}
+  rightFoot: {fileID: 1195492663, guid: ccf528106549363479b32be8a6b4f0ad, type: 3}
+  tail: {fileID: -197992956, guid: ccf528106549363479b32be8a6b4f0ad, type: 3}
+  full: {fileID: 799137240, guid: 62af95d5aa077854480beb03a266c915, type: 3}

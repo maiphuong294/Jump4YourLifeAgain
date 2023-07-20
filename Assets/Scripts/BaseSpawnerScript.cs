@@ -21,6 +21,8 @@ public class BaseSpawnerScript : MonoBehaviour
         SpawnPosY = FirstBase.transform.position.y - BaseToBase;
         countBase = 0f;
         BaseToBase = 3.0f;
+
+       
     }
 
     // Update is called once per frame

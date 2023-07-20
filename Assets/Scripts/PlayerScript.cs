@@ -39,6 +39,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private Character Pig;
     [SerializeField] private Character Puppy;
     [SerializeField] private Character Penguin;
+    [SerializeField] private Character Kitten;
 
     private Dictionary<string, Character> CharacterDictionary = new Dictionary<string, Character>();
 
@@ -77,6 +78,7 @@ public class PlayerScript : MonoBehaviour
         CharacterDictionary.Add("Pig", Pig);
         CharacterDictionary.Add("Puppy", Puppy);
         CharacterDictionary.Add("Penguin", Penguin);
+        CharacterDictionary.Add("Kitten", Kitten);
 
         string s = PlayerPrefs.GetString("Character");
         if (s != null)
@@ -306,7 +308,8 @@ public class PlayerScript : MonoBehaviour
             BaseScript a = obj.GetComponent<BaseScript>();
             if (a != null)
             {
-                a.velocity = 0f;
+                a.velocity_x = 0f;
+                a.velocity_y = 0f;
             }
         }
         GameOverPanel.instance.Show();

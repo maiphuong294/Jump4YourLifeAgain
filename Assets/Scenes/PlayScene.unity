@@ -321,6 +321,7 @@ MonoBehaviour:
   Pig: {fileID: 11400000, guid: 9d56478c2a3ada34dae0b3b8d4b1a9dd, type: 2}
   Puppy: {fileID: 11400000, guid: 05548c96653ac764db8c5db84f5ca99c, type: 2}
   Penguin: {fileID: 11400000, guid: f0eccfb95ed2a7a4a85b13f0530d6a33, type: 2}
+  Kitten: {fileID: 11400000, guid: bb0ce1b148bb14b4f81038029d28952d, type: 2}
   City: {fileID: 11400000, guid: 13883716178eeb74f83c853b4df91418, type: 2}
   Forest: {fileID: 11400000, guid: 29fe881e72630034795377ebc1d1f0d9, type: 2}
   IceMountain: {fileID: 11400000, guid: 6ddb4fd72a2716e4eb2881a55e647e58, type: 2}

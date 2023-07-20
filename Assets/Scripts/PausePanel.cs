@@ -63,6 +63,7 @@ public class PausePanel : MonoBehaviour
         else
         {
             icon.sprite = noAudio;
+            
         }
         
     }
@@ -89,7 +90,9 @@ public class PausePanel : MonoBehaviour
     {
         
         SceneManager.LoadScene("MenuScene");
-        
+        Time.timeScale = 1f;
+        AudioManager.instance.audioBackground();
+
     }
 
     public IEnumerator Replay()

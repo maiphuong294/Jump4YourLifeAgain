@@ -5,10 +5,11 @@ using UnityEngine;
 public class BaseScript : MonoBehaviour
 {
     
-    public float direction;
-    public float velocity;
+    [SerializeField] private float direction;
+    public float velocity_x;
+    public float velocity_y;
     private SpriteRenderer spriteRenderer;
-    public Sprite brokenBase;
+    [SerializeField] private Sprite brokenBase;
     public int state = 0;
     //0 la ban dau khoi tao
     //1 la khi player da nhay len
@@ -21,14 +22,28 @@ public class BaseScript : MonoBehaviour
         
         spriteRenderer = GetComponent<SpriteRenderer>();
         direction = 1.0F;
-        velocity = 2F;
+        velocity_x = 2F;
+        velocity_y = 0f;
+
+        if (Random.Range(1,100) % 5 == 0)
+        {
+            velocity_y = 0.3f;
+        }
+        //else
+        //{
+        //    //if(Random.Range(1,100) % 5 == 0)
+        //    //{
+
+        //    //}
+        //}
+        
     }
 
     // Update is called once per frame
     void Update()
-    {   
-        
-        transform.position = transform.position + Vector3.left * velocity * direction * Time.deltaTime;
+    {       
+        transform.position += Vector3.left * velocity_x * direction * Time.deltaTime;
+        transform.position += Vector3.down * velocity_y * direction * Time.deltaTime;
     }
 
 

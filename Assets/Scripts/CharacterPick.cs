@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterPick : MonoBehaviour
 {
@@ -34,5 +35,26 @@ public class CharacterPick : MonoBehaviour
 
         transform.Find("GreenOutline").gameObject.SetActive(true);
         transform.Find("GreenTick").gameObject.SetActive(true);
+
+        updateCharacterViewDemo();
+        updateCharacterButton();
+       
+    }
+
+    public void updateCharacterButton()
+    {
+        //update button o menu
+
+        Sprite a = transform.Find("Head").GetComponent<Image>().sprite;
+
+        GameObject charButton = GameObject.Find("Character Button");
+        charButton.transform.Find("Character Icon").gameObject.GetComponent<Image>().sprite = a;
+    }
+
+    public void updateCharacterViewDemo()
+    {
+        //update con full body dung tuong trung
+        GameObject character = GameObject.Find("Character View");
+        character.GetComponent<Image>().sprite = charData.full;
     }
 }

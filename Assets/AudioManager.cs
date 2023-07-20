@@ -41,8 +41,9 @@ public class AudioManager : MonoBehaviour
     }
     public void audioBackground()
     {
-        audioSource.clip = background;
-        audioSource.Play();
+            audioSource.clip = background;
+            audioSource.Play();
+        
     }
     public void audioGameOver()
     {

@@ -69,6 +69,7 @@ public class GameOverPanel : MonoBehaviour
     public void OnCloseButton()
     {
         SceneManager.LoadScene("MenuScene");
+        AudioManager.instance.audioBackground();
     }
 
 }
