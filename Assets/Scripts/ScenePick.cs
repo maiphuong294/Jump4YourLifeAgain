@@ -14,11 +14,19 @@ public class ScenePick : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        string s = PlayerPrefs.GetString("Scene");
+        if(scene.sceneName != s)
+        {
+            transform.Find("GreenOutline").gameObject.SetActive(false);
+        }
     }
 
     public void OnScenePickButton()
     {
         PlayerPrefs.SetString("Scene", scene.sceneName);
+
+        transform.Find("GreenOutline").gameObject.SetActive(true);
+
+
     }
 }
