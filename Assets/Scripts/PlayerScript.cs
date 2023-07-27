@@ -66,11 +66,11 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         
-        if (isOnBase == true && BaseCollide != null)
-        {
-            //player dinh theo base
-            transform.position = new Vector3(BaseCollide.transform.position.x + toBasePos.x, BaseCollide.transform.position.y + toBasePos.y, 0f);
-        }
+        //if (isOnBase == true && BaseCollide != null)
+        //{
+        //    //player dinh theo base
+        //    transform.position = new Vector3(BaseCollide.transform.position.x + toBasePos.x, BaseCollide.transform.position.y + toBasePos.y, 0f);
+        //}
         
   
         if (isOnBase == true && Input.GetMouseButtonDown(0) && !IsOverUI())
@@ -99,6 +99,7 @@ public class PlayerScript : MonoBehaviour
             sBaseScript = BaseCollide.GetComponent<BaseScript>();
             if (sBaseScript.state > 2)
             {
+                transform.SetParent(null);
                 BaseCollide.SetActive(false);
                 gameOver();
                 
@@ -109,7 +110,7 @@ public class PlayerScript : MonoBehaviour
 
     void Jump()
     {
-        
+        transform.SetParent(null);
         rb.AddForce(new Vector2(0f, 2.5f), ForceMode2D.Impulse);
         
         isOnBase = false;
@@ -123,6 +124,7 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+       
         ScoreManagerScript.currentScore++;
         ScoreManagerScript.currentScore += ScoreManagerScript.scoreTrigger;
         ScoreManagerScript.scoreTrigger = 0;
@@ -134,8 +136,10 @@ public class PlayerScript : MonoBehaviour
             //xuly player vs base
             isOnBase = true;
             BaseCollide = collision.gameObject;
-            toBasePos = new Vector2(transform.position.x - BaseCollide.transform.position.x, transform.position.y - BaseCollide.transform.position.y);
+            //toBasePos = new Vector2(transform.position.x - BaseCollide.transform.position.x, transform.position.y - BaseCollide.transform.position.y);
 
+            
+            transform.SetParent(BaseCollide.transform);
             //xuly camera
             elapsedTime = 0f;
             CameraOnPlayer = false;

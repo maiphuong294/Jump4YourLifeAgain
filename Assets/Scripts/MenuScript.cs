@@ -38,6 +38,8 @@ public class MenuScript : MonoBehaviour
 
         AudioIcon = transform.Find("Setting Popup/Popup/Audio Button/Image").gameObject;
         icon = AudioIcon.GetComponent<Image>();
+
+        Application.targetFrameRate = 60;
     }
 
     // Update is called once per frame
