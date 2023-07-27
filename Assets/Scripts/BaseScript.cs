@@ -26,20 +26,23 @@ public class BaseScript : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         color = spriteRenderer.color;
         direction = 1.0F;
-        velocity_x = 2F;
+        velocity_x = 1.8F;
         velocity_y = 0f;
 
         colorUp = 2;//khong phai la base tang hinh
 
         if (Random.Range(1,100) % 5 == 0)
         {
+            //xac suat base di cheo la 20/100 = 20%;
             velocity_y = 0.3f;
         }
         else
         {
-            if (Random.Range(1,100) % 2 == 0)
+            if (Random.Range(1,100) % 4 == 0)
             {
+                //xac suat base tang hing la 80% * 25%% = 20%
                 colorUp = 0;
+                color.a = 0.5f;
   
             }
         }
@@ -54,21 +57,22 @@ public class BaseScript : MonoBehaviour
         transform.position += Vector3.down * velocity_y * direction * Time.deltaTime;
 
 
-        ////chuyen blur
-        //if (colorUp == 0)
-        //{
-        //    color.a -= 0.005f;
-        //    spriteRenderer.color = color;
-        //}else if (colorUp == 1)
-        //{
-        //    color.a += 0.005f;
-        //    spriteRenderer.color = color;
-        //}
+        //chuyen blur
+        if (colorUp == 0)
+        {
+            color.a -= 0.002f;
+            spriteRenderer.color = color;
+        }
+        else if (colorUp == 1)
+        {
+            color.a += 0.002f;
+            spriteRenderer.color = color;
+        }
 
-        //if (color.a == 0f || color.a == 1f)
-        //{
-        //    colorUp = 1 - colorUp;
-        //}
+        if (color.a <= 0.2f || color.a >= 0.95f)
+        {
+            colorUp = 1 - colorUp;
+        }
 
     }
 
