@@ -18,6 +18,9 @@ public class PausePanel : MonoBehaviour
     public bool isAudioOn;
     public bool isVibrateOn;
 
+    private GameObject AudioIcon;
+    private Image icon;
+
     public void Awake()
     {
         instance = this; 
@@ -27,12 +30,21 @@ public class PausePanel : MonoBehaviour
         animator.SetInteger("isPaused", 0);
         isAudioOn = true;
         isVibrateOn = true;
+
+        AudioIcon = transform.Find("Pop-up/Audio Button/Audio Icon").gameObject;
+        icon = AudioIcon.GetComponent<Image>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //chuyen sprite audio trong update vi co the audio on off tai menu, nhung se khong cap nhat luon
+        //-> dung playerprefs de check lien tuc trong update
+        if (PlayerPrefs.GetInt("AudioOn") == 1)
+        {
+            icon.sprite = Audio;
+        }
+        else icon.sprite = noAudio;
     }
 
     //open pause panel
@@ -54,19 +66,14 @@ public class PausePanel : MonoBehaviour
     {
         Debug.Log("Audio");
         //change audio sprite
-        GameObject AudioIcon= transform.Find("Pop-up/Audio Button/Audio Icon").gameObject;
-        Image icon = AudioIcon.GetComponent<Image>();
-        isAudioOn = !isAudioOn;
-        if (isAudioOn == true)
-        {
-            icon.sprite = Audio;
-        }
-        else
-        {
-            icon.sprite = noAudio;
-            
-        }
         
+
+        int a = PlayerPrefs.GetInt("AudioOn");
+        PlayerPrefs.SetInt("AudioOn", 1 - a);      
+
+        AudioManager.instance.audioButtonPressed();
+        AudioManager.instance.audioOnChange();
+
     }
     public void OnVibrateButton()
     {
@@ -80,7 +87,8 @@ public class PausePanel : MonoBehaviour
             icon.sprite = Vibrate;
         }
         else icon.sprite = noVibrate;
-        
+        AudioManager.instance.audioButtonPressed();
+
     }
     public void OnReplayButton()
     {

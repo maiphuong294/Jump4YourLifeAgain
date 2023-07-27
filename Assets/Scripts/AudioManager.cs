@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance {  get; private set; }
 
     [SerializeField] private AudioSource audioSource;
+    private int isAudioOn;
 
     [SerializeField] private AudioClip background;
     [SerializeField] private AudioClip breaksound;
@@ -32,6 +33,8 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(this);
+        isAudioOn = PlayerPrefs.GetInt("AudioOn");
+        audioOnUpdate();
         audioBackground();
         
     }
@@ -75,6 +78,19 @@ public class AudioManager : MonoBehaviour
     {
         audioSource.Stop();
     }
-    
+
+    public void audioOnChange()
+    {
+        isAudioOn = 1 - isAudioOn;
+        audioOnUpdate();
+    }
+
+    public void audioOnUpdate() { 
+        if (isAudioOn == 0)
+        {
+            audioSource.volume = 0f;
+        }
+        else audioSource.volume = 1f;
+    }
 
 }

@@ -18,6 +18,9 @@ public class MenuScript : MonoBehaviour
     public bool isAudioOn;
     public bool isVibrateOn;
 
+    private GameObject AudioIcon;
+    private Image icon;
+
     [SerializeField] private TextMeshProUGUI highScoreText;
     void Start()
     {
@@ -32,12 +35,19 @@ public class MenuScript : MonoBehaviour
         {
             highScoreText.SetText(PlayerPrefs.GetInt("HighScore").ToString());
         }
+
+        AudioIcon = transform.Find("Setting Popup/Popup/Audio Button/Image").gameObject;
+        icon = AudioIcon.GetComponent<Image>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (PlayerPrefs.GetInt("AudioOn") == 1)
+        {
+            icon.sprite = Audio;
+        }
+        else icon.sprite = noAudio;
     }
 
     public void OnPlayButton()
@@ -65,19 +75,16 @@ public class MenuScript : MonoBehaviour
     }
     public void OnAudioButton()
     {
-        GameObject AudioIcon = transform.Find("Setting Popup/Popup/Audio Button/Image").gameObject;
-        Image icon = AudioIcon.GetComponent<Image>();
-        isAudioOn = !isAudioOn;
-        if (isAudioOn == true)
-        {
-            icon.sprite = Audio;
-        }
-        else icon.sprite = noAudio;
+        int a = PlayerPrefs.GetInt("AudioOn");
+        PlayerPrefs.SetInt("AudioOn", 1 - a);
+     
+        AudioManager.instance.audioButtonPressed();
+        AudioManager.instance.audioOnChange();
     }
 
     public void OnVibrateButton()
     {
-      
+        AudioManager.instance.audioButtonPressed();
         GameObject VibrateIcon = transform.Find("Setting Popup/Popup/Vibrate Button/Image").gameObject;
         Image icon = VibrateIcon.GetComponent<Image>();
         isVibrateOn = !isVibrateOn;
