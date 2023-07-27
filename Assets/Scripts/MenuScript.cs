@@ -42,6 +42,7 @@ public class MenuScript : MonoBehaviour
 
     public void OnPlayButton()
     {
+        AudioManager.instance.audioButtonPressed();
         Debug.Log("Let's play");
         SceneManager.LoadScene("PlayScene");
     }
@@ -51,12 +52,14 @@ public class MenuScript : MonoBehaviour
     //SETTING POPUP
     public void OnSettingButton()
     {
+        AudioManager.instance.audioButtonPressed();
         Debug.Log("onsettingbutton");
         settingAnimator.SetBool("isOpen", true);
 
     }
     public void OnSettingCloseButton()
     {
+        AudioManager.instance.audioButtonPressed();
         settingAnimator.SetBool("isOpen", false);
 
     }
@@ -88,6 +91,7 @@ public class MenuScript : MonoBehaviour
 
     public void OnOptionButton()
     {
+        AudioManager.instance.audioButtonPressed();
         OptionPanel.instance.Open();
     }
 

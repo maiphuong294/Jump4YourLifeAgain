@@ -31,7 +31,7 @@ public class CharacterPick : MonoBehaviour
 
     public void OnCharacterPickButton()
     {
-
+        AudioManager.instance.audioButtonPressed();
         PlayerPrefs.SetInt("Character", charData.id);
 
         GreenTick();

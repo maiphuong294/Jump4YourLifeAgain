@@ -51,6 +51,7 @@ public class GameOverPanel : MonoBehaviour
 
     public void OnReplayButton()
     {
+        AudioManager.instance.audioButtonPressed();
         Debug.Log("on replay button");
         StartCoroutine(Replay());
 
@@ -67,6 +68,7 @@ public class GameOverPanel : MonoBehaviour
 
     public void OnCloseButton()
     {
+        AudioManager.instance.audioButtonPressed();
         SceneManager.LoadScene("MenuScene");
         AudioManager.instance.audioBackground();
     }

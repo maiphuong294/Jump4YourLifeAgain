@@ -12,6 +12,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip breaksound;
     [SerializeField] private AudioClip gameover;
     [SerializeField] private AudioClip jump;
+    [SerializeField] private AudioClip perfect;
+    [SerializeField] private AudioClip buttonPressed;
 
 
     public void Awake()
@@ -33,7 +35,6 @@ public class AudioManager : MonoBehaviour
         audioBackground();
         
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -58,6 +59,16 @@ public class AudioManager : MonoBehaviour
     public void audioJump()
     {
         audioSource.PlayOneShot(jump);
+    }
+
+    public void audioPerfect()
+    {
+        audioSource.PlayOneShot(perfect);
+    }
+
+    public void audioButtonPressed()
+    {
+        audioSource.PlayOneShot(buttonPressed);
     }
     
     public void stopAudio()

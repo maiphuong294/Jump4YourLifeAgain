@@ -23,6 +23,7 @@ public class ScenePick : MonoBehaviour
 
     public void OnScenePickButton()
     {
+        AudioManager.instance.audioButtonPressed();
         PlayerPrefs.SetInt("Scene", scene.id);
 
         transform.Find("GreenOutline").gameObject.SetActive(true);

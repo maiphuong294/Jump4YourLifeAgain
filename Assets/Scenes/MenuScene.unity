@@ -8688,6 +8688,8 @@ MonoBehaviour:
   breaksound: {fileID: 8300000, guid: 76710ddd4bd560f4b93cf75b1995ae4e, type: 3}
   gameover: {fileID: 8300000, guid: d1c83cb25aa2cf94191368a739273cda, type: 3}
   jump: {fileID: 8300000, guid: c54c6b562789d6e429852c174d92ee6e, type: 3}
+  perfect: {fileID: 8300000, guid: ab17b511be95f3c4399d02f711e564ea, type: 3}
+  buttonPressed: {fileID: 8300000, guid: 625ad317b451ec147984e94636d712a6, type: 3}
 --- !u!4 &1321309297
 Transform:
   m_ObjectHideFlags: 0

@@ -45,6 +45,7 @@ public class PausePanel : MonoBehaviour
     //close pause panel
     public void OnCloseButton()
     {
+        AudioManager.instance.audioButtonPressed();
         Time.timeScale = 1f;
         animator.SetInteger("isPaused", 2);    
     }
@@ -83,12 +84,13 @@ public class PausePanel : MonoBehaviour
     }
     public void OnReplayButton()
     {
+        AudioManager.instance.audioButtonPressed();
         Debug.Log("ON REPLAY BUTTON");
         StartCoroutine(Replay());
     }
     public void OnHomeButton()
     {
-        
+        AudioManager.instance.audioButtonPressed();
         SceneManager.LoadScene("MenuScene");
         Time.timeScale = 1f;
         AudioManager.instance.audioBackground();

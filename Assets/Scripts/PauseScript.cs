@@ -19,6 +19,7 @@ public class PauseScript : MonoBehaviour
 
     public void OnPauseButton()
     {
+        AudioManager.instance.audioButtonPressed();
         Debug.Log("PAUSE");
         
         PausePanel.instance.Open();

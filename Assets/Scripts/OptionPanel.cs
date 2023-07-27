@@ -30,6 +30,7 @@ public class OptionPanel : MonoBehaviour
     public void OnCloseButton()
     {
         //animation close
+        AudioManager.instance.audioButtonPressed();
         animator.SetBool("isOpen", false);
     }
     public void Open()
@@ -39,12 +40,14 @@ public class OptionPanel : MonoBehaviour
 
     public void OnCharacterSelectButton()
     {
+        AudioManager.instance.audioButtonPressed();
         charScroll.SetActive(true);
         sceneScroll.SetActive(false);
     }
     
     public void OnSceneSelectButton()
     {
+        AudioManager.instance.audioButtonPressed();
         charScroll.SetActive(false);
         sceneScroll.SetActive(true);
     }

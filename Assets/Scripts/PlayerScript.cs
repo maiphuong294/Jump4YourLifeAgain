@@ -152,6 +152,7 @@ public class PlayerScript : MonoBehaviour
             if (isPerfect() && collision.gameObject.name != "FirstBase")
             {
                 Debug.Log("PERFECT");
+                AudioManager.instance.audioPerfect();
                 ScoreManagerScript.bonus++;
                 ScoreManagerScript.currentScore += ScoreManagerScript.bonus;
                 UIControllerScript.instance.Perfect();
