@@ -11,8 +11,10 @@ public class UIControllerScript : MonoBehaviour
     // Start is called before the first frame update
     public Animator animatorPerfect;
     public int score;
+    public static UIControllerScript instance {  get; private set; }
     void Start()
     {
+        instance = this;
         score = -1;
         //xu ly perfect
         GameObject perfectPopup = transform.Find("Canvas/Perfect Popup").gameObject;
@@ -29,7 +31,7 @@ public class UIControllerScript : MonoBehaviour
     public void setUIText()
     {
         GameObject UIText = transform.Find("Canvas/Score Text").gameObject;
-        UIText.SetActive(true);
+        //UIText.SetActive(true);
 
         TextMeshProUGUI textComponent = UIText.GetComponent<TextMeshProUGUI>();
         textComponent.text = ScoreManagerScript.currentScore.ToString();

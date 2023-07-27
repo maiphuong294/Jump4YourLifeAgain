@@ -12,13 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cb5c0fcd40e6f24c95ea3092446214e, type: 3}
   m_Name: Penguin
   m_EditorClassIdentifier: 
+  id: 2
   characterName: Penguin
+  prefab: {fileID: 1981602223536767235, guid: 529e2edc05ee5a444aa005cadc6f0d18, type: 3}
   head: {fileID: -1873784950, guid: bf5cab5621232b74c83e21574b04f404, type: 3}
   headMono: {fileID: 1350274183, guid: d846d50c9178eed4290581753ca6458a, type: 3}
-  body: {fileID: -1705558226, guid: bf5cab5621232b74c83e21574b04f404, type: 3}
-  leftHand: {fileID: 1308700980, guid: bf5cab5621232b74c83e21574b04f404, type: 3}
-  rightHand: {fileID: 73551043, guid: bf5cab5621232b74c83e21574b04f404, type: 3}
-  leftFoot: {fileID: -1254292548, guid: bf5cab5621232b74c83e21574b04f404, type: 3}
-  rightFoot: {fileID: -1404904214, guid: bf5cab5621232b74c83e21574b04f404, type: 3}
-  tail: {fileID: 0}
   full: {fileID: 175326671, guid: 62af95d5aa077854480beb03a266c915, type: 3}
+  fullMono: {fileID: 0}

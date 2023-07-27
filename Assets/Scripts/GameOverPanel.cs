@@ -35,8 +35,7 @@ public class GameOverPanel : MonoBehaviour
         GameObject popup = transform.Find("Pop-up").gameObject;
         animator = popup.transform.GetComponent<Animator>();
 
-        UIControllerScript sUIControllerScript = uiController.GetComponent<UIControllerScript>();
-        sUIControllerScript.SetFinalScore();
+        UIControllerScript.instance.SetFinalScore();
 
 
         // dung game

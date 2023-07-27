@@ -13,12 +13,7 @@ MonoBehaviour:
   m_Name: Pig
   m_EditorClassIdentifier: 
   characterName: Pig
+  prefab: {fileID: 476124221580530362, guid: 57db346acd38d9643a28079028ec0f78, type: 3}
   head: {fileID: 391007632, guid: a268a82ac43812946944bffd962ffa81, type: 3}
   headMono: {fileID: 0}
-  body: {fileID: -1577618253, guid: a268a82ac43812946944bffd962ffa81, type: 3}
-  leftHand: {fileID: 1385333178, guid: a268a82ac43812946944bffd962ffa81, type: 3}
-  rightHand: {fileID: 926942059, guid: a268a82ac43812946944bffd962ffa81, type: 3}
-  leftFoot: {fileID: -793715310, guid: a268a82ac43812946944bffd962ffa81, type: 3}
-  rightFoot: {fileID: -1637709472, guid: a268a82ac43812946944bffd962ffa81, type: 3}
-  tail: {fileID: 0}
   full: {fileID: 1643760562, guid: 62af95d5aa077854480beb03a266c915, type: 3}

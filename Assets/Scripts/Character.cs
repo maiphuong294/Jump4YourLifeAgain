@@ -5,20 +5,17 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Character", menuName = "character")]
 public class Character : ScriptableObject
 {
-
+    public int id;
     public string characterName;
-
+    
+    public GameObject prefab;
     public Sprite head;
     public Sprite headMono;
 
-    public Sprite body;
-    public Sprite leftHand;
-    public Sprite rightHand;
-    public Sprite leftFoot;
-    public Sprite rightFoot;
-    public Sprite tail;
-
     public Sprite full;
+    public Sprite fullMono;
+    
 
-   
+
+
 }

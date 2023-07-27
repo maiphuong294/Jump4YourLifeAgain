@@ -11,20 +11,20 @@ using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
-    public GameObject UIController;
-    public UIControllerScript sUIControllerScript;
+    //public GameObject UIController;
+    //public UIControllerScript sUIControllerScript;
 
 
     [SerializeField] private Camera MainCamera;
     private Rigidbody2D rb;
     public float jumpSpeed;
     private Collider2D colliderBase;
-    public GameObject BaseCollide; //tra ve base ma dang collide voi
+    [SerializeField] private GameObject BaseCollide; //tra ve base ma dang collide voi
     private Vector2 toBasePos;
     private Vector2 toCameraPos;//cai nay se la constant
-    public BaseScript sBaseScript;
+    [SerializeField] private BaseScript sBaseScript;
 
-    public bool isOnBase;
+    [SerializeField] private bool isOnBase;
     //de check xem player co dang tren base khong
     //neu tren base thi se di chuyen theo base
 
@@ -36,30 +36,15 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField] private Animator playerAnimator;
 
-    [SerializeField] private Character Pig;
-    [SerializeField] private Character Puppy;
-    [SerializeField] private Character Penguin;
-    [SerializeField] private Character Kitten;
-
-    private Dictionary<string, Character> CharacterDictionary = new Dictionary<string, Character>();
-
-    [SerializeField] private Scene City;
-    [SerializeField] private Scene Forest;
-    [SerializeField] private Scene IceMountain;
-    [SerializeField] private Scene Meadow;
-    [SerializeField] private Scene SkyandClouds;
-
-    private Dictionary<string, Scene> SceneDictionary = new Dictionary<string, Scene>();
 
     void Start()
     {
-
+        MainCamera = FindObjectOfType<Camera>();
         Debug.Log("Start");
         transform.Translate(Vector2.right * jumpSpeed);
         jumpSpeed = 15.0f;
         isOnBase = true;
         rb = GetComponent<Rigidbody2D>();
-        sUIControllerScript = UIController.GetComponent<UIControllerScript>();
 
         //lay khoang cach dau tien tu player den camera
         toCameraPos = new Vector2(MainCamera.transform.position.x - transform.position.x, MainCamera.transform.position.y - transform.position.y);
@@ -71,69 +56,7 @@ public class PlayerScript : MonoBehaviour
         sBaseScript = null;
         BaseCollide = null;
 
-        playerAnimator = gameObject.GetComponent<Animator>();
-
-        //doi skin cho player
-        
-        CharacterDictionary.Add("Pig", Pig);
-        CharacterDictionary.Add("Puppy", Puppy);
-        CharacterDictionary.Add("Penguin", Penguin);
-        CharacterDictionary.Add("Kitten", Kitten);
-
-        string s = PlayerPrefs.GetString("Character");
-        if (s != null)
-        {
-            if (CharacterDictionary.TryGetValue(s, out Character a))
-            {
-                SpriteRenderer headSprite = transform.Find("Head").gameObject.GetComponent<SpriteRenderer>();   
-                headSprite.sprite = a.head;
-
-                SpriteRenderer bodySprite = transform.Find("Body").gameObject.GetComponent<SpriteRenderer>();
-                bodySprite.sprite = a.body;
-
-                SpriteRenderer leftHand = transform.Find("Hand/LeftHand").gameObject.GetComponent<SpriteRenderer>();
-                leftHand.sprite = a.leftHand;
-
-                SpriteRenderer rightHand = transform.Find("Hand/RightHand").gameObject.GetComponent<SpriteRenderer>();
-                rightHand.sprite = a.rightHand;
-
-                SpriteRenderer leftFoot = transform.Find("Feet/LeftFoot").gameObject.GetComponent<SpriteRenderer>();
-                leftFoot.sprite = a.leftFoot;
-
-                SpriteRenderer rightFoot = transform.Find("Feet/RightFoot").gameObject.GetComponent<SpriteRenderer>();
-                rightFoot.sprite = a.rightFoot;
-
-                SpriteRenderer tail = transform.Find("Tail").gameObject.GetComponent<SpriteRenderer>();
-                tail.sprite = a.tail;
-
-            }
-            else
-            {
-                Debug.LogWarning("Object with name '" + s + "' not found.");
-            }
-        }
-
-        //doi scene cho background
-        SceneDictionary.Add("City", City);
-        SceneDictionary.Add("Forest", Forest);
-        SceneDictionary.Add("Ice Mountain", IceMountain);
-        SceneDictionary.Add("Meadow", Meadow);
-        SceneDictionary.Add("Sky and Clouds", SkyandClouds);
-
-        string s2 = PlayerPrefs.GetString("Scene");
-        if(s2 != null)
-        {
-            if(SceneDictionary.TryGetValue(s2, out Scene a))
-            {
-                SpriteRenderer background = MainCamera.transform.Find("Background").gameObject.GetComponent<SpriteRenderer>();
-                background.sprite = a.scene;
-            }
-            else
-            {
-                Debug.Log("Scene not found");
-            }
-            
-        }
+        playerAnimator = GetComponent<Animator>();
 
     }
 
@@ -174,8 +97,9 @@ public class PlayerScript : MonoBehaviour
             sBaseScript = BaseCollide.GetComponent<BaseScript>();
             if (sBaseScript.state > 2)
             {
-                gameOver();
                 BaseCollide.SetActive(false);
+                gameOver();
+                
             }
         }
 
@@ -183,12 +107,16 @@ public class PlayerScript : MonoBehaviour
 
     void Jump()
     {
-        Debug.Log("Jump! " + Time.time);
+        
         rb.AddForce(new Vector2(0f, 2.5f), ForceMode2D.Impulse);
+        
         isOnBase = false;
         playerAnimator.SetBool("isJump", true);
 
         AudioManager.instance.audioJump();
+        Debug.Log("Jump! " + Time.time);
+
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -224,10 +152,10 @@ public class PlayerScript : MonoBehaviour
                 Debug.Log("PERFECT");
                 ScoreManagerScript.bonus++;
                 ScoreManagerScript.currentScore += ScoreManagerScript.bonus;
-                sUIControllerScript.Perfect();
+                UIControllerScript.instance.Perfect();
             }
             else ScoreManagerScript.bonus = 0;
-            sUIControllerScript.setUIText();
+            UIControllerScript.instance.setUIText();
 
             //sau khi jump len base do thi khong tinh trigger cho base do nua
             if(BaseCollide != null)

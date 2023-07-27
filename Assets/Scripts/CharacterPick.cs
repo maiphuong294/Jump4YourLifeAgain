@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,9 +20,9 @@ public class CharacterPick : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        string s = PlayerPrefs.GetString("Character");
+        int a = PlayerPrefs.GetInt("Character");
 
-        if (charData.characterName != s)
+        if (charData.id != a)
         {
             transform.Find("GreenOutline").gameObject.SetActive(false);
             transform.Find("GreenTick").gameObject.SetActive(false);
@@ -31,10 +32,9 @@ public class CharacterPick : MonoBehaviour
     public void OnCharacterPickButton()
     {
 
-        PlayerPrefs.SetString("Character", charData.characterName);
+        PlayerPrefs.SetInt("Character", charData.id);
 
-        transform.Find("GreenOutline").gameObject.SetActive(true);
-        transform.Find("GreenTick").gameObject.SetActive(true);
+        GreenTick();
 
         updateCharacterViewDemo();
         updateCharacterButton();
@@ -56,5 +56,17 @@ public class CharacterPick : MonoBehaviour
         //update con full body dung tuong trung
         GameObject character = GameObject.Find("Character View");
         character.GetComponent<Image>().sprite = charData.full;
+
+        //update character name
+        GameObject characterName = GameObject.Find("Character Name");
+        characterName.GetComponent<TextMeshProUGUI>().text = charData.name;
     }
+
+    public void GreenTick()
+    {
+        transform.Find("GreenOutline").gameObject.SetActive(true);
+        transform.Find("GreenTick").gameObject.SetActive(true);
+    }
+    
+    
 }
