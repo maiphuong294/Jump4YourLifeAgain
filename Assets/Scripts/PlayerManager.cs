@@ -13,7 +13,7 @@ public class PlayerManager : MonoBehaviour
         int index = PlayerPrefs.GetInt("Character");
         if( index == -1)
         {
-            index = Random.Range(0, 5);
+            index = Random.Range(0, 6);
         }
         Instantiate(PlayerPrefab[index]);
 
