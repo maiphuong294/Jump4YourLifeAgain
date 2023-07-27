@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18ab895e47b2b0345b063371fae83003, type: 3}
   m_Name: Sky and Clouds
   m_EditorClassIdentifier: 
+  id: 4
   sceneName: Sky and Clouds
   scene: {fileID: 1949412125, guid: cdcc98876b874be439c566b45ada111e, type: 3}

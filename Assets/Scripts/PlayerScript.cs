@@ -17,6 +17,7 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField] private Camera MainCamera;
     private Rigidbody2D rb;
+    private bool isAlive;
     public float jumpSpeed;
     private Collider2D colliderBase;
     [SerializeField] private GameObject BaseCollide; //tra ve base ma dang collide voi
@@ -39,6 +40,7 @@ public class PlayerScript : MonoBehaviour
 
     void Start()
     {
+        isAlive = true;
         MainCamera = FindObjectOfType<Camera>();
         Debug.Log("Start");
         transform.Translate(Vector2.right * jumpSpeed);
@@ -92,7 +94,7 @@ public class PlayerScript : MonoBehaviour
 
 
         //neu broken roi ma tiep tuc dap vao tuong
-        if (sBaseScript != null)
+        if (sBaseScript != null && isAlive == true)
         {
             sBaseScript = BaseCollide.GetComponent<BaseScript>();
             if (sBaseScript.state > 2)
@@ -185,7 +187,11 @@ public class PlayerScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bound"))
         {
-            gameOver();
+            if(isAlive == true)
+            {
+                gameOver();
+            }
+            
         }
         if (collision.gameObject.CompareTag("ScoreTrigger"))
         {
@@ -221,7 +227,7 @@ public class PlayerScript : MonoBehaviour
     public void gameOver()
     {
         //dung tat ca va de cho player roi xuong
-
+        isAlive = false;
         Collider2D player = gameObject.GetComponent<Collider2D>();
         if (player != null)
         {
