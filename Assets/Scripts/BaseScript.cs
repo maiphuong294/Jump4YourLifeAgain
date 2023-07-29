@@ -60,16 +60,16 @@ public class BaseScript : MonoBehaviour
         //chuyen blur
         if (colorUp == 0)
         {
-            color.a -= 0.002f;
+            color.a -= 0.004f;
             spriteRenderer.color = color;
         }
         else if (colorUp == 1)
         {
-            color.a += 0.002f;
+            color.a += 0.004f;
             spriteRenderer.color = color;
         }
 
-        if (color.a <= 0.2f || color.a >= 0.95f)
+        if (color.a <= 0.2f || color.a >= 0.97f)
         {
             colorUp = 1 - colorUp;
         }
